@@ -1,6 +1,6 @@
 id: MailQueue
 name: MailQueue
-version: 0.01
+version: 0.02
 author_name: masiuchi
 description: <MT_TRANS phrase="Use Job Queue in MT::Mail::send.">
 plugin_link: https://github.com/masiuchi/mt-plugin-mail-queue
@@ -13,4 +13,3 @@ task_workers:
     mt_send_mail:
         label: Send e-mails.
         class: MailQueue::Worker::SendMail
-
