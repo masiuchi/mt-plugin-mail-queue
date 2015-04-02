@@ -14,6 +14,13 @@ our $UNIQKEY_SIZE = 255;
 sub init_app {
     no warnings 'redefine';
     *MT::Mail::send = sub {
+
+        # Do nomally when MailTransfer is debug.
+        my $mail_transfer = MT->config->MailTransfer;
+        if ( defined $mail_transfer && $mail_transfer eq 'debug' ) {
+            return &send(@_);
+        }
+
         my $job = TheSchwartz::Job->new();
         $job->funcname('MailQueue::Worker::SendMail');
         $job->priority(4);
